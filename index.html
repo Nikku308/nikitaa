@@ -23,26 +23,36 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 1000px;
             width: 100%;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Left Side - Envelope */
+        .envelope-section {
+            flex: 1;
+            min-width: 350px;
             text-align: center;
         }
 
-        h1 {
+        h2 {
             color: #fff;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+            font-size: 2rem;
+            margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
             animation: fadeIn 2s ease-in;
         }
 
-        /* Envelope Styles */
         .envelope-wrapper {
             position: relative;
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
             height: 350px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
             cursor: pointer;
             perspective: 1500px;
         }
@@ -99,12 +109,39 @@
         .envelope-back {
             background: white;
             transform: rotateX(180deg);
-            padding: 30px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             border: 2px solid #ff6b6b;
+        }
+
+        .love-card {
+            width: 100%;
+            text-align: center;
+        }
+
+        .to-from {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .message {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff5f5;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b6b;
+            text-align: left;
         }
 
         .heart-decoration {
@@ -115,65 +152,10 @@
             animation: heartbeat 1.5s ease-in-out infinite;
         }
 
-        /* Card inside envelope */
-        .love-card {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .to-from {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            color: #ff6b6b;
-            font-weight: bold;
-        }
-
-        .message {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #333;
-            margin: 20px 0;
-            padding: 20px;
-            background: #fff5f5;
-            border-radius: 10px;
-            border-left: 4px solid #ff6b6b;
-            text-align: left;
-            /* Removed max-height and overflow to prevent scrolling */
-            width: 100%;
-            word-wrap: break-word;
-        }
-
-        .floating-hearts {
-            position: relative;
-            height: 50px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .heart {
-            position: absolute;
-            font-size: 20px;
-            animation: float 3s ease-in-out infinite;
-            opacity: 0.6;
-        }
-
-        .heart:nth-child(1) { left: 20%; animation-delay: 0s; }
-        .heart:nth-child(2) { left: 50%; animation-delay: 0.5s; }
-        .heart:nth-child(3) { left: 80%; animation-delay: 1s; }
-        .heart:nth-child(4) { left: 35%; animation-delay: 1.5s; }
-        .heart:nth-child(5) { left: 65%; animation-delay: 2s; }
-
-        /* Instruction text */
         .instruction {
             color: white;
             font-size: 18px;
-            margin: 20px 0;
+            margin-top: 20px;
             background: rgba(255,255,255,0.2);
             padding: 10px 20px;
             border-radius: 50px;
@@ -181,15 +163,109 @@
             backdrop-filter: blur(5px);
         }
 
-        /* Bottom hearts */
-        .bottom-hearts {
-            margin-top: 30px;
+        /* Right Side - Image Gallery */
+        .gallery-section {
+            flex: 1;
+            min-width: 350px;
+            text-align: center;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 350px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: scale(1.02);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #ff6b6b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-card img:hover {
+            opacity: 0.9;
+            box-shadow: 0 5px 20px rgba(255,107,107,0.5);
+        }
+
+        .image-caption {
+            margin-top: 10px;
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .floating-hearts {
+            margin-top: 20px;
             font-size: 30px;
             animation: pulse 2s ease-in-out infinite;
         }
 
-        .bottom-hearts span {
+        .floating-hearts span {
             margin: 0 5px;
+            display: inline-block;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        .floating-hearts span:nth-child(2) { animation-delay: 0.3s; }
+        .floating-hearts span:nth-child(3) { animation-delay: 0.6s; }
+        .floating-hearts span:nth-child(4) { animation-delay: 0.9s; }
+        .floating-hearts span:nth-child(5) { animation-delay: 1.2s; }
+
+        /* Lightbox Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+            border: 5px solid white;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #ff6b6b;
         }
 
         /* Animations */
@@ -204,92 +280,98 @@
             100% { transform: scale(1); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
-
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
 
         /* Mobile responsive */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .envelope-wrapper { height: 400px; } /* Increased height for mobile */
-            .message { 
-                font-size: 16px; 
-                padding: 15px;
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
             }
-            .envelope-front::before { font-size: 60px; }
-            .envelope-back { padding: 20px; }
-        }
-
-        /* Small height screens */
-        @media (max-height: 700px) {
-            .envelope-wrapper { height: 320px; }
-            .message { 
-                font-size: 15px; 
-                padding: 12px;
-                margin: 10px 0;
+            
+            .envelope-section, .gallery-section {
+                width: 100%;
             }
-            .to-from { margin-bottom: 10px; }
-            .floating-hearts { margin-top: 10px; }
+            
+            h2 { font-size: 1.8rem; }
+            .envelope-wrapper { height: 300px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>For You, With Love 💖</h1>
-        
-        <div class="instruction">👇 Click on the envelope to open</div>
-        
-        <div class="envelope-wrapper" onclick="toggleEnvelope()">
-            <div class="envelope" id="envelope">
-                <!-- Front of envelope -->
-                <div class="envelope-face envelope-front">
-                    <p>Open the envelope slowly...</p>
-                    <small>click me</small>
-                </div>
-                
-                <!-- Back of envelope (the message) -->
-                <div class="envelope-face envelope-back">
-                    <div class="heart-decoration">💖</div>
-                    <div class="love-card">
-                        <div class="to-from">
-                            <span>To: <span id="toName">Satyam</span></span>
-                            <span>💗</span>
-                        </div>
-                        
-                        <div class="message" id="messageBox">
-                            Every single day with you feels like a blessing I never want to take for granted. From the way you laugh to the way you hold my hand when I least expect it, you've filled my life with so much love and happiness.
-                        </div>
-                        
-                        <div class="floating-hearts">
-                            <span class="heart">💖</span>
-                            <span class="heart">💗</span>
-                            <span class="heart">❤️</span>
-                            <span class="heart">💕</span>
-                            <span class="heart">💓</span>
-                        </div>
-                        
-                        <div class="to-from" style="margin-top: 10px;">
-                            <span></span>
-                            <span>From: Your Love 💖</span>
+        <!-- Left Side: Envelope -->
+        <div class="envelope-section">
+            <h2>Love Message 💌</h2>
+            
+            <div class="envelope-wrapper" onclick="toggleEnvelope()">
+                <div class="envelope" id="envelope">
+                    <!-- Front of envelope -->
+                    <div class="envelope-face envelope-front">
+                        <p>Open the envelope slowly...</p>
+                        <small>click me</small>
+                    </div>
+                    
+                    <!-- Back of envelope (the message) -->
+                    <div class="envelope-face envelope-back">
+                        <div class="heart-decoration">💖</div>
+                        <div class="love-card">
+                            <div class="to-from">
+                                <span>To: <span id="toName">Satyam</span></span>
+                                <span>💗</span>
+                            </div>
+                            
+                            <div class="message" id="messageBox">
+                                Every single day with you feels like a blessing I never want to take for granted. From the way you laugh to the way you hold my hand when I least expect it, you've filled my life with so much love and happiness.
+                            </div>
+                            
+                            <div class="to-from">
+                                <span></span>
+                                <span>From: Your Love 💖</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <div class="instruction">👇 Click on the envelope to open</div>
         </div>
-        
-        <div class="bottom-hearts">
-            <span>💖</span>
-            <span>💖</span>
-            <span>❤️</span>
-            <span>💗</span>
-            <span>❤️</span>
+
+        <!-- Right Side: Image Gallery -->
+        <div class="gallery-section">
+            <h2>Our Memories 📸</h2>
+            
+            <div class="gallery">
+                <!-- First Image -->
+                <div class="image-card">
+                    <img src="photo.jpeg" alt="Memory 1" onclick="openImageModal('photo.jpeg', 'Beautiful Memory 1')">
+                    <div class="image-caption">💕 Memory 1</div>
+                </div>
+                
+                <!-- Second Image -->
+                <div class="image-card">
+                    <img src="photo2.jpeg" alt="Memory 2" onclick="openImageModal('photo2.jpeg', 'Beautiful Memory 2')">
+                    <div class="image-caption">💕 Memory 2</div>
+                </div>
+            </div>
+            
+            <div class="floating-hearts">
+                <span>💖</span>
+                <span>💗</span>
+                <span>❤️</span>
+                <span>💕</span>
+                <span>💓</span>
+            </div>
         </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="imageModal" class="modal" onclick="closeImageModal()">
+        <span class="modal-close" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div style="color: white; text-align: center; margin-top: 10px;" id="modalCaption"></div>
     </div>
 
     <script>
@@ -336,20 +418,33 @@
             }
         }
 
+        // Open image in modal
+        function openImageModal(imageSrc, caption) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            
+            modalImage.src = imageSrc;
+            modalCaption.textContent = caption;
+            modal.style.display = 'block';
+        }
+
+        // Close image modal
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
         // Initialize when page loads
         window.onload = function() {
             updateContent();
-            
-            // Auto-open after 1 second (optional - comment out if not wanted)
-            // setTimeout(() => {
-            //     document.getElementById('envelope').classList.add('open');
-            // }, 1000);
         };
-        
-        // Handle window resize to ensure message fits
-        window.onresize = function() {
-            // No scrollbar needed, just let it flow naturally
-        };
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
     </script>
 </body>
 </html>
