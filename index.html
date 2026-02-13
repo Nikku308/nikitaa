@@ -105,7 +105,6 @@
             justify-content: center;
             align-items: center;
             border: 2px solid #ff6b6b;
-            overflow-y: auto;
         }
 
         .heart-decoration {
@@ -145,8 +144,9 @@
             border-radius: 10px;
             border-left: 4px solid #ff6b6b;
             text-align: left;
-            max-height: 180px;
-            overflow-y: auto;
+            /* Removed max-height and overflow to prevent scrolling */
+            width: 100%;
+            word-wrap: break-word;
         }
 
         .floating-hearts {
@@ -217,9 +217,25 @@
         /* Mobile responsive */
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
-            .envelope-wrapper { height: 300px; }
-            .message { font-size: 16px; padding: 15px; }
+            .envelope-wrapper { height: 400px; } /* Increased height for mobile */
+            .message { 
+                font-size: 16px; 
+                padding: 15px;
+            }
             .envelope-front::before { font-size: 60px; }
+            .envelope-back { padding: 20px; }
+        }
+
+        /* Small height screens */
+        @media (max-height: 700px) {
+            .envelope-wrapper { height: 320px; }
+            .message { 
+                font-size: 15px; 
+                padding: 12px;
+                margin: 10px 0;
+            }
+            .to-from { margin-bottom: 10px; }
+            .floating-hearts { margin-top: 10px; }
         }
     </style>
 </head>
@@ -242,7 +258,7 @@
                     <div class="heart-decoration">💖</div>
                     <div class="love-card">
                         <div class="to-from">
-                            <span>To: Satyam</span>
+                            <span>To: <span id="toName">Satyam</span></span>
                             <span>💗</span>
                         </div>
                         
@@ -291,10 +307,10 @@
             const params = getQueryParams();
             
             // Update "To" field
-            const toElements = document.querySelectorAll('.to-from span:first-child');
-            toElements.forEach(el => {
-                el.textContent = `To: ${params.name}`;
-            });
+            const toName = document.getElementById('toName');
+            if (toName) {
+                toName.textContent = params.name;
+            }
             
             // Update message
             const messageBox = document.getElementById('messageBox');
@@ -324,10 +340,15 @@
         window.onload = function() {
             updateContent();
             
-            // Auto-open after 1 second (optional)
+            // Auto-open after 1 second (optional - comment out if not wanted)
             // setTimeout(() => {
             //     document.getElementById('envelope').classList.add('open');
             // }, 1000);
+        };
+        
+        // Handle window resize to ensure message fits
+        window.onresize = function() {
+            // No scrollbar needed, just let it flow naturally
         };
     </script>
 </body>
